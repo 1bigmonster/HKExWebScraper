@@ -2,18 +2,18 @@
 using System;
 using System.IO;
 using System.Linq;
-
+   
 namespace HKExWebScraper
 {
     class HsiFutOpenInterestScraper : WebScraper
     {
         public readonly string Output = Properties.Settings.Default.Output;
-        public readonly string Url = Properties.Settings.Default.Source;
+        public readonly string source = Properties.Settings.Default.Source;
 
         public override void Init()
         {
             this.LoggingLevel = WebScraper.LogLevel.All;
-            this.Request(Url, Parse);
+            this.Request(source, Parse);
         }
 
         public override void Parse(Response response)
