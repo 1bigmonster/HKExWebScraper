@@ -7,6 +7,8 @@ namespace HKExWebScraper
 {
     class HsiFutOpenInterestScraper : WebScraper
     {
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public readonly string Output = Properties.Settings.Default.Output;
         public readonly string source = Properties.Settings.Default.Source;
 
@@ -18,8 +20,14 @@ namespace HKExWebScraper
 
         public override void Parse(Response response)
         {
+            logger.Info(response.TextContent);
             //Get the second table.
-            var table = response.Css("table.table.migrate").ToArray()[1];
+
+            var tables = response.Css("table.table.migrate").ToArray();
+            var last = tables.Where(x => x.InnerHtml.Contains("Hang Seng Index Futures Turnover")).LastOrDefault();
+
+            //var table = response.Css("table.table.migrate").ToArray()[1];
+            var table = last;
             var elements = table.InnerText.Split('\n');
             elements = elements.Where(x => !String.IsNullOrWhiteSpace(x)).Select(x => x.Trim()).ToArray();
 

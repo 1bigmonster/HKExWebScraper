@@ -6,7 +6,7 @@
       <Value Profile="(Default)">https://www.hkex.com.hk/market-data/statistics/derivatives-market/market-share-data-on-hsi-futures?sc_lang=en</Value>
     </Setting>
     <Setting Name="Output" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">C:\temp\HsiFutOI.csv</Value>
+      <Value Profile="(Default)">C:\Development\home\VisualStudio\HKExWebScraper\HKExWebScraper\HKExWebScraper\bin\Debug\HsiFutOI.csv</Value>
     </Setting>
   </Settings>
 </SettingsFile>
